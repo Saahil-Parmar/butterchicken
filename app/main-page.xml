@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="navigatingTo"
+      loaded="onLoaded"
+      xmlns:core="@nativescript/core">
+    <ActionBar title="Fitness Tracker" />
+    
+    <GridLayout>
+        <ScrollView>
+            <StackLayout class="p-4">
+                <!-- Exercise Input Section -->
+                <Label text="Add Exercise" class="text-xl font-bold mb-2" />
+                
+                <TextField hint="Exercise Name" text="{{ exerciseName }}" 
+                          class="input mb-2 p-2 border rounded" />
+                
+                <Label text="Select Body Part" class="mb-2" />
+                <ListPicker items="{{ bodyParts }}" selectedIndex="{{ selectedBodyPart }}"
+                           class="mb-4" height="120" />
+                
+                <Button text="Add Exercise" tap="{{ addExercise }}" 
+                        class="btn btn-primary mb-6" />
+                
+                <!-- Inactive Body Parts Section -->
+                <Label text="Body Parts Needing Exercise" class="text-xl font-bold mb-2" />
+                <ListView items="{{ inactiveBodyParts }}" height="300" class="list-group">
+                    <ListView.itemTemplate>
+                        <StackLayout class="list-group-item">
+                            <Label text="{{ $value }}" class="text-red-500 p-2" textWrap="true" />
+                        </StackLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>
